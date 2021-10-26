@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Онлайн - оценка изделий</title>
+    <link rel="stylesheet" href="https://code.s3.yandex.net/web-code/normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <section class="form">
+          <div class="form__container">
+            <h2 class="form__heading">Онлайн - оценка изделий</h2>
+            <form class="form__admin" id="form">
+              <div class="form__main-container">
+                <fieldset class="form__input-container form__input-container_ctrl_texts">
+    
+                  <input type="text" class="form__item" id="name" name="name" placeholder="Как зовут?" required />
+    
+                  <input type="email" class="form__item" id="email" name="email" placeholder="hello@example.com" required />
+    
+                  <input type="phone" class="form__item" id="phone" name="phone" placeholder="Телефон" required />
+    
+                  <select class="form__item" id="category" name="category">
+                    <option selected="true" value="jewelery">Ювелирные изделия</option>
+                    <option value="gems">Бриллианты</option>
+                    <option value="furs">Шубы</option>
+                  </select>
+    
+                  <div id="params">
+                    <!-- доп категории: ювелирка -->
+                    <div id="jewelery-input">
+                      <input type="text" class="form__item" id="jewelery-probe" name="jewelery-probe" placeholder="Проба" />
+    
+                      <input type="text" class="form__item" id="jewelery-weight" name="jewelery-weight" placeholder="Вес в граммах" />
+                    </div>
+    
+                    <!-- доп категории: бриллианты -->
+                    <div id="gems-input" style="display: none;">
+                      <input type="text" class="form__item" id="gems-probe" name="gems-probe" placeholder="Характеристика значение" />
+    
+                      <input type="text" class="form__item" id="gems-weight" name="gems-weight" placeholder="Карат" />
+                    </div>
+    
+                    <!-- доп категории: шубы -->
+                    <div id="furs-input" style="display: none;">
+                      <input type="text" class="form__item" id="furs-param-1" name="param_1" placeholder="значение" />
+    
+                      <input type="text" class="form__item" id="furs-param-2" name="furs-param-2" placeholder="Характеристика шубы 2" />
+                    </div>
+                  </div>
+    
+                  <textarea class="form__item" id="comments" name="comments" placeholder="Дополнительная информация"></textarea>
+    
+                  <input type="file" id="upload" />
+                </fieldset>
+    
+              </div>
+              <input type="submit" class="form__button" />
+    
+            </form>
+          </div>
+    
+          <div id="output">
+            <p>Значения, появятся после сабмита формы.</p>
+            <p>Вывод:</p>
+          </div>
+        </section>
+      </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+.page {
+    font-family: Verdana, sans-serif;
+    }
+    
+    .form {
+      width: 800px;
+      margin: 0 auto;
+      background: #f1f1f1;
+    }
+    
+    /* Заголовок формы */
+    .form__heading {
+      font-size: 28px;
+      line-height: 32px;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Непосредственно форма */
+    .form__admin {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .form__input-container {
+      border: 0;
+    }
+    
+    
+    /* Общие стили для всех полей ввода */
+    .form__item {
+      border: 1px solid #d1d1d1;
+      border-radius: 7px;
+      background: #fff;
+      padding: 15px;
+      color: #000;
+      box-sizing: initial;
+      width: 40%;
+      margin: 10px;
+    }
+    
+    .form__item:focus {
+      outline-color: #741b5f;
+    }
+    
+    /* Стилизуем плейсхолдеры */
+    .form__item::placeholder {
+      font-size: 14px;
+      line-height: 20px;
+      color: #222;
+    }
+    
+    .form__button:focus {
+      outline-color: #741b5f;
+    }
+    
+    .form__button:hover {
+      opacity: 0.9;
+    }
+    
+    /* кнопка отправки данных  */
+    .form__button[type="submit"] {
+      width: 50%;
+      background-color: #741b5f;
+      text-transform: uppercase;
+      color: #fff;
+      border-radius: 5px;
+      margin: 40px 0;
+        height: 40px;
+      font-size: 14px;
+    }
+    
+    
+    /* не забыть убрать */
+    #output {
+      background: #222;
+      color: #fff;
+      padding: 50px;
+    }
+    
