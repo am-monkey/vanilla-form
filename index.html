@@ -5,71 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Онлайн - оценка изделий</title>
-    <link rel="stylesheet" href="https://code.s3.yandex.net/web-code/normalize.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <div class="page">
-        <section class="form">
-          <div class="form__container">
-            <h2 class="form__heading">Онлайн - оценка изделий</h2>
-            <form class="form__admin" id="form">
-              <div class="form__main-container">
-                <fieldset class="form__input-container form__input-container_ctrl_texts">
-    
-                  <input type="text" class="form__item" id="name" name="name" placeholder="Как зовут?" required />
-    
-                  <input type="email" class="form__item" id="email" name="email" placeholder="hello@example.com" required />
-    
-                  <input type="phone" class="form__item" id="phone" name="phone" placeholder="Телефон" required />
-    
-                  <select class="form__item" id="category" name="category">
-                    <option selected="true" value="jewelery">Ювелирные изделия</option>
-                    <option value="gems">Бриллианты</option>
-                    <option value="furs">Шубы</option>
-                  </select>
-    
-                  <div id="params">
-                    <!-- доп категории: ювелирка -->
-                    <div id="jewelery-input">
-                      <input type="text" class="form__item" id="jewelery-probe" name="jewelery-probe" placeholder="Проба" />
-    
-                      <input type="text" class="form__item" id="jewelery-weight" name="jewelery-weight" placeholder="Вес в граммах" />
-                    </div>
-    
-                    <!-- доп категории: бриллианты -->
-                    <div id="gems-input" style="display: none;">
-                      <input type="text" class="form__item" id="gems-probe" name="gems-probe" placeholder="Характеристика значение" />
-    
-                      <input type="text" class="form__item" id="gems-weight" name="gems-weight" placeholder="Карат" />
-                    </div>
-    
-                    <!-- доп категории: шубы -->
-                    <div id="furs-input" style="display: none;">
-                      <input type="text" class="form__item" id="furs-param-1" name="param_1" placeholder="значение" />
-    
-                      <input type="text" class="form__item" id="furs-param-2" name="furs-param-2" placeholder="Характеристика шубы 2" />
-                    </div>
-                  </div>
-    
-                  <textarea class="form__item" id="comments" name="comments" placeholder="Дополнительная информация"></textarea>
-    
-                  <input type="file" id="upload" />
-                </fieldset>
-    
+  <div class="page">
+        <h2 class="form__heading"><strong>Онлайн</strong> <span style="color:#A52838">•</span> оценка</h2>
+        <form class="form" id="form">
+          <div class="form__main-container">
+            <fieldset class="form__input">
+              <div class="form__input__row">
+                <input type="text" class="form__item" id="name" name="name" placeholder="Как зовут?" required />
+                <input type="email" class="form__item" id="email" name="email" placeholder="hello@example.com"  />
               </div>
+
+              <div class="form__input__row">
+                <input type="tel" class="form__item" data-tel-input id="phone" name="phone" placeholder="Телефон" maxlength="18"  />
+                <select class="form__item" id="category" name="category">
+                  <option selected="true" value="jewelery">Ювелирные изделия</option>
+                  <option value="gems">Драгоценные камни</option>
+                  <option value="furs">Шубы</option>
+                  <option value="apple">Apple техника</option>
+                  <option value="antiqua">Антиквариат</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
+
+              <div id="params" >
+                <!-- доп параметры: ювелирка -->
+                <div id="jewelery-input" class="form__input__row">
+                  <input type="number" class="form__item" id="jewelery-probe" name="jewelery-probe" placeholder="Проба" />
+                  <input type="number" class="form__item" id="jewelery-weight" name="jewelery-weight" placeholder="Вес" />
+                  <input type="text" class="form__item" id="jewelery-type" name="jewelery-type" placeholder="Тип металла" />
+                </div>
+
+                <!-- доп параметры: бриллианты -->
+                <div id="gems-input" class="form__input__row" style="display: none;">
+                  <input type="text" class="form__item" id="gems-weight" name="gems-weight" placeholder="Вес в каратах" />
+                  <input type="text" class="form__item" id="gems-probe" name="gems-probe" placeholder="Наличие документов" />
+                </div>
+
+                <!-- доп параметры: шубы -->
+                <div id="furs-input" class="form__input__row" style="display: none;">
+                  <input type="text" class="form__item" id="furs-type" name="furs-type" placeholder="Вид меха" />
+                  <input type="text" class="form__item" id="furs-quality" name="furs-quality" placeholder="Состояние" />
+                </div>
+
+                <!-- доп параметры: apple -->
+                <div id="apple-input" class="form__input__row" style="display: none;">
+                  <input type="text" class="form__item" id="apple-model" name="furs-type" placeholder="Модель" />
+                  <input type="text" class="form__item" id="apple-memory" name="furs-quality" placeholder="Объем памяти" />
+                </div>
+
+              </div>
+
+              <textarea class="form__item" id="comments" name="comments" placeholder="Дополнительная информация"></textarea>
               <input type="submit" class="form__button" />
-    
-            </form>
+              <p>
+                Или свяжитесь с нами через мессенджеры:
+              </p>
+
+            </fieldset>
+            
+            <fieldset class="form__upload">
+              <label class="form__upload__label">
+                <span class="title">Загрузить фотографии</span>
+                <input id="file-input" type="file" name="file" multiple>
+              </label>
+
+              <div id="file-preview"></div>
+              <p>Загружено файлов: <span id="file-count">0</span></p>
+              <p class="file-error"></p>
+            </fieldset>
+
           </div>
-    
-          <div id="output">
-            <p>Значения, появятся после сабмита формы.</p>
-            <p>Вывод:</p>
+          <div class="form__bottom-container">
+
+            <div>
+
+            </div>
+
+
           </div>
-        </section>
+
+        </form>
+
+      <div id="output">
+        <p>Значения, появятся после сабмита формы.</p>
+        <p>Вывод:</p>
       </div>
+  </div>
     <script src="script.js"></script>
 </body>
 
