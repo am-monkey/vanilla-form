@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Онлайн - оценка изделий</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div class="page">
+        <h2 class="form__heading"><strong>Онлайн</strong> <span style="color:#A52838">•</span> оценка</h2>
+        <form class="form" id="form">
+          <div class="form__main-container">
+            <fieldset class="form__input">
+              <div class="form__input__row">
+                <input type="text" class="form__item" id="name" name="name" placeholder="Как зовут?" required />
+                <input type="email" class="form__item" id="email" name="email" placeholder="hello@example.com"  />
+              </div>
+
+              <div class="form__input__row">
+                <input type="tel" class="form__item" data-tel-input id="phone" name="phone" placeholder="Телефон" maxlength="18"  />
+                <select class="form__item" id="category" name="category">
+                  <option selected="true" value="jewelery">Ювелирные изделия</option>
+                  <option value="gems">Драгоценные камни</option>
+                  <option value="furs">Шубы</option>
+                  <option value="apple">Apple техника</option>
+                  <option value="antiqua">Антиквариат</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
+
+              <div id="params" >
+                <!-- доп параметры: ювелирка -->
+                <div id="jewelery-input" class="form__input__row">
+                  <input type="number" class="form__item" id="jewelery-probe" name="jewelery-probe" placeholder="Проба" />
+                  <input type="number" class="form__item" id="jewelery-weight" name="jewelery-weight" placeholder="Вес" />
+                  <input type="text" class="form__item" id="jewelery-type" name="jewelery-type" placeholder="Тип металла" />
+                </div>
+
+                <!-- доп параметры: бриллианты -->
+                <div id="gems-input" class="form__input__row" style="display: none;">
+                  <input type="text" class="form__item" id="gems-weight" name="gems-weight" placeholder="Вес в каратах" />
+                  <input type="text" class="form__item" id="gems-probe" name="gems-probe" placeholder="Наличие документов" />
+                </div>
+
+                <!-- доп параметры: шубы -->
+                <div id="furs-input" class="form__input__row" style="display: none;">
+                  <input type="text" class="form__item" id="furs-type" name="furs-type" placeholder="Вид меха" />
+                  <input type="text" class="form__item" id="furs-quality" name="furs-quality" placeholder="Состояние" />
+                </div>
+
+                <!-- доп параметры: apple -->
+                <div id="apple-input" class="form__input__row" style="display: none;">
+                  <input type="text" class="form__item" id="apple-model" name="furs-type" placeholder="Модель" />
+                  <input type="text" class="form__item" id="apple-memory" name="furs-quality" placeholder="Объем памяти" />
+                </div>
+
+              </div>
+
+              <textarea class="form__item" id="comments" name="comments" placeholder="Дополнительная информация"></textarea>
+              <input type="submit" class="form__button" />
+              <p>
+                Или свяжитесь с нами через мессенджеры:
+              </p>
+
+            </fieldset>
+            
+            <fieldset class="form__upload">
+              <label class="form__upload__label">
+                <img src="img/upload-icon.svg" />
+                <p class="title">Загрузить фотографии</p>
+                <input id="file-input" type="file" name="file" multiple>
+              </label>
+
+              <div id="file-preview"></div>
+              <p id="file-count"></p>
+              <p class="file-error"></p>
+            </fieldset>
+
+          </div>
+          <div class="form__bottom-container">
+
+            <div>
+
+            </div>
+
+
+          </div>
+
+        </form>
+
+      <div id="output">
+        <p>Значения, появятся после сабмита формы.</p>
+        <p>Вывод:</p>
+      </div>
+  </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

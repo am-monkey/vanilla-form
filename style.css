@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap');
+
+
+.page {
+    font-family: Verdana, sans-serif;
+}
+
+/* Заголовок формы */
+.form__heading {
+    font-family: 'Manrope', sans-serif;
+    font-size: 28px;
+    line-height: 32px;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Непосредственно форма */
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    margin: 0 auto;
+    background: #fafafa;
+    padding: 40px;
+    font-family: 'Manrope', sans-serif;
+
+}
+
+.form__main-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.form__input-container {
+    border: 0;
+}
+
+.form__input {
+    width: 740px;
+}
+
+.form__input__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Общие стили для всех полей ввода */
+.form__item {
+    font-family: 'Manrope', sans-serif;
+    border: 1px solid #F1F1F1;
+    border-radius: 10px;
+    background: #fff;
+    padding: 15px 20px;
+    color: #1e1e1e;
+    min-width: 360px;
+    box-sizing: border-box;
+}
+
+
+#params .form__item {
+    flex-grow: 1;
+    min-width: auto;
+    margin-right: 10px;
+}
+
+#params .form__item:last-of-type {
+    margin-right: 0;
+}
+
+.form__item:focus {
+    outline-color: #a52838;
+}
+
+/* Стилизуем плейсхолдеры */
+.form__item::placeholder {
+    font-size: 18px;
+    line-height: 27px;
+    color: #898989;
+}
+
+.form__button:focus {
+    outline-color: #a52838;
+}
+
+.form__button:hover {
+    opacity: 0.9;
+}
+
+/* кнопка отправки данных  */
+.form__button[type="submit"] {
+    width: 50%;
+    background-color: #a52838;
+    color: #fff;
+    border-radius: 5px;
+    margin: 40px 0;
+    height: 40px;
+    font-size: 14px;
+    border: 0;
+}
+
+#comments {
+    width: 100%;
+}
+
+
+/* file input   */
+input[type="file"] {
+    display: none;
+}
+
+fieldset {
+    border: 0;
+}
+
+.form__upload {
+    width: 410px;
+    height: 410px;
+    background: #F1F1F1;
+    padding: 40px;
+    display: inline-block;
+    padding: 40px 65px;
+    overflow-y: scroll;
+}
+
+#file-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-top: 1px solid #E8E8E8;
+    padding-top: 40px;
+}
+
+input[type=file] {
+    outline: 0;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none
+}
+
+.uploaded-img{
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    margin: 10px 0;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.uploaded-img:hover{
+    border-color: #a52838;
+}
+
+.form__upload__label {
+    border-radius: 5px;
+    display: block;
+    padding: 1.2em;
+    transition: border 300ms ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form__upload__label i,
+.form__upload__label .title {
+    color: grey;
+    transition: 200ms color
+}
+
+.form__upload__label:hover {
+    border: 1px solid #a52838;
+}
+
+.form__upload__label:hover i,
+.form__upload__label:hover .title {
+    color: #000
+}
+
+
+
+/* прячем стрелки у инпутов с числами */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+
+
+
+
+
+
+
+/* не забыть убрать */
+#output {
+    background: #222;
+    color: #fff;
+    padding: 50px;
+}
