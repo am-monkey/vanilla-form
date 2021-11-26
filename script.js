@@ -12,21 +12,22 @@ const fileCount = document.getElementById('file-count');
 
 const output = document.getElementById('output');
 
-const reqInputs = Array.from(document.querySelectorAll('input[name=phone], input[name=email]'));
-const inputListener = e => reqInputs.filter(i => i !== e.target).forEach(i => i.required = !e.target.value.length);
 
-reqInputs.forEach(i => i.addEventListener('input', inputListener));
 
+
+// if(document.getElementsByName("email").value || document.getElementsByName("phone").value) {
+//    alert('ok')
+// } else {
+//     alert('nooooo')
+
+// }
 
 function showEl(el) {
     el.style.display = "block";
-    // el.querySelectorAll('input').required = true;
 }
 
 function hideEl(el) {
     el.style.display = "none";
-    // el.querySelectorAll('input').required = false;
-
     let elCount = el.querySelectorAll('input');
     for (let i = 0; i < elCount.length; i++) {
         elCount[i].value = '';
@@ -34,7 +35,6 @@ function hideEl(el) {
 }
 
 select.addEventListener("change", function () {
-
     if (this.value == 'jewelery') {
         showEl(jeweleryInput);
         hideEl(gemsInput);
@@ -68,18 +68,12 @@ select.addEventListener("change", function () {
         hideEl(jeweleryInput);
         hideEl(fursInput);
     }
-
 });
-
-
-
-
 
 
 // phone mask
 let phoneInputs = document.querySelectorAll('input[data-tel-input]');
 let getInputNumbersValue = function (input) {
-    // Return stripped input value — just numbers
     return input.value.replace(/\D/g, '');
 }
 let onPhonePaste = function (e) {
@@ -89,8 +83,6 @@ let onPhonePaste = function (e) {
     if (pasted) {
         let pastedText = pasted.getData('Text');
         if (/\D/g.test(pastedText)) {
-            // Attempt to paste non-numeric symbol — remove all non-numeric symbols,
-            // formatting will be in onPhoneInput handler
             input.value = inputNumbersValue;
             return;
         }
@@ -108,9 +100,7 @@ let onPhoneInput = function (e) {
     }
 
     if (input.value.length != selectionStart) {
-        // Editing in the middle of input, not last symbol
         if (e.data && /\D/g.test(e.data)) {
-            // Attempt to input non-numeric symbol
             input.value = inputNumbersValue;
         }
         return;
@@ -138,7 +128,6 @@ let onPhoneInput = function (e) {
     input.value = formattedInputValue;
 }
 let onPhoneKeyDown = function (e) {
-    // Clear input after remove last symbol
     let inputValue = e.target.value.replace(/\D/g, '');
     if (e.keyCode == 8 && inputValue.length == 1) {
         e.target.value = "";
@@ -151,10 +140,7 @@ for (let phoneInput of phoneInputs) {
 }
 
 
-
-
 /* file uploader input + preview */
-
 function previewImages() {
     let preview = document.querySelector('#file-preview');
     if (this.files) {
@@ -171,50 +157,83 @@ function readAndPreview(file) {
     let reader = new FileReader();
     reader.addEventListener("load", function () {
         let image = new Image();
-        // image.height = 100;
         image.title = file.name;
         image.src = this.result;
+        image.classList = 'uploaded-img';
         fileListDisplay.appendChild(image);
     });
     reader.readAsDataURL(file);
 }
 
+/*
+let fileNum = 0;
+function fileCounter() {
+    fileNum = fileList.length;
+    fileCount.innerHTML = 'Загружено файлов: <strong>' + fileNum + '</strong>';
 
+}
+*/
 
 let fileList = [];
-
 fileInput.addEventListener('change', function (evnt) {
+
     fileList = [];
+
     for (let i = 0; i < fileInput.files.length; i++) {
         fileList.push(fileInput.files[i]);
     }
-    if (this.files) {
-        [].forEach.call(this.files, readAndPreview);
+
+    // limit maximum 9 images
+    if (fileList.length < 10 && fileListDisplay.querySelectorAll('img').length < 9) {
+        if (this.files) {
+            [].forEach.call(this.files, readAndPreview);
+        }
+        // fileCounter()
+    } else {
+        alert('9 файлов максимум')
     }
-    fileCount.innerHTML = fileList.length;
 });
 
+function remove(el) {
+    el.remove();
+}
 
-// при сабмите получаем значения всех полей в форме и выводим их в консоль
-form.onsubmit = async (e) => {
+fileListDisplay.onclick = e => {
+    remove(e.target);
+}
+
+
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
+
+
+let formResult = {};
+
+// form submit
+form.onsubmit = (e) => {
 
     event.preventDefault();
-    console.log('***');
-    // console.log(form.elements);
     [...form.elements].forEach((item) => {
         if (item.value) {
-            console.log(item.id + ': ', item.value);
             output.innerHTML += item.value + "<br/>";
         }
     });
-    console.log(fileList);
 
     /*  post data */
-    // let response = await fetch('/article/formdata/post/user-avatar', {
-    //   method: 'POST',
-    //   body: new FormData(form)
-    // });
-    // let result = await response.json();
-    // console.log(result.message);
-
+    fetch('/api', {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            formResult = {...formResult, data};
+        });
 };
+
+console.log(formResult);
